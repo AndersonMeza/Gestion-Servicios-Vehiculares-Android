@@ -40,14 +40,28 @@ public class EncargadoDM
         Toast.makeText(clase,"Se ha ingresado correctamente",Toast.LENGTH_SHORT).show();
     }
 
-    public void Modificar( EncargadoDP modificarEncargado)
+    public void Modificar( EncargadoDP modificarEncargado, Activity clase)
     {
+        BaseDatos modificar = new BaseDatos(clase,"encargados",null,1);
+        SQLiteDatabase baseDatos= modificar.getWritableDatabase();
 
+        int codigo=modificarEncargado.getCodigo();
+        String nombre=modificarEncargado.nombre;
+        String apellido=modificarEncargado.apellido;
+        String usuario=modificarEncargado.usuario;
+
+        baseDatos.execSQL("Update encargados set usuario='"+usuario+"', nombre='"+nombre+"',apellido='"+apellido+"' where codigo="+codigo);
+        Toast.makeText(clase,"Se ha modificado correctamente",Toast.LENGTH_SHORT).show();
     }
 
-    public void Eliminar(EncargadoDP eliminarEncargado)
+    public void Eliminar(EncargadoDP eliminarEncargado,Activity clase)
     {
+        BaseDatos eliminar = new BaseDatos(clase,"encargados",null,1);
+        SQLiteDatabase baseDatos= eliminar.getWritableDatabase();
 
+        int codigo=eliminarEncargado.getCodigo();
+        baseDatos.execSQL("Delete from encargados where codigo ="+codigo);
+        Toast.makeText(clase,"Se ha eliminado correctamente",Toast.LENGTH_SHORT).show();
     }
 
     public List<String> Consultar(int codigoEncargado,String usuario, Activity clase)

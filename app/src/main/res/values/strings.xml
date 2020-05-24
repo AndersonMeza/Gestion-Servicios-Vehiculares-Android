@@ -7,4 +7,8 @@
     <string name="botonIngresarEncargado">Crear Nuevo</string>
     <string name="seleccioneEncargado">Seleccione su Usuario</string>
     <string name="textoBienvenida">Bienvenido</string>
+    <string name="itemEditarEncargado">Modificar Encargado</string>
+    <string name="title_activity_ventana_de_vehiculos_gu">VentanaDeVehiculosGU</string>
+    <string name="boton_modificar_encargado">Modificar</string>
+    <string name="boton_eliminar_encargado">Eliminar Encargado</string>
 </resources>
