@@ -10,6 +10,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.List;
 
@@ -47,17 +48,9 @@ public class VentanaIngresoGUI extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                /*List<String> valoresEncagado=encargadoDM.Consultar(0,lista.getItemIdAtPosition(position)+"",VentanaIngresoGUI.this);
-                encargadoDP.setCodigo(Integer.parseInt(valoresEncagado.get(0)));
-                encargadoDP.setUsuario(valoresEncagado.get(1));
-                encargadoDP.setNombre(valoresEncagado.get(2));
-                encargadoDP.setApellido(valoresEncagado.get(3));*/
-
+                String usuarioEncargado = encargados.get(position);
                 Intent intent = new Intent(VentanaIngresoGUI.this,VentanaDeVehiculosGUI.class);
-                /*intent.putExtra("codigo",encargadoDP.getCodigo());
-                intent.putExtra("usuario",encargadoDP.usuario);*/
-                //intent.putExtra("nombre",encargadoDP.nombre);
-               /* intent.putExtra("apellido",encargadoDP.apellido);*/
+                intent.putExtra("usuarioEncargado",usuarioEncargado);
                 startActivity(intent);
             }
         });

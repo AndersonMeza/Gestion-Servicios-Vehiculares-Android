@@ -79,18 +79,18 @@ public class EncargadoDM
         else if(usuario=="")
         {
 
-            Cursor fila = baseDatos.rawQuery("select usuario from encargados",null);
+            Cursor fila = baseDatos.rawQuery("select * from encargados",null);
             if(fila.moveToFirst())
             {
                 do{
-                    usuarios.add(fila.getString(0));
+                    usuarios.add(fila.getString(3));
                 }
                 while(fila.moveToNext());
             }
         }
         else
         {
-            Cursor fila = baseDatos.rawQuery("select * from encargados where usuario="+usuario,null);
+            Cursor fila = baseDatos.rawQuery("select * from encargados where usuario= '"+usuario+"'",null);
 
 
             if(fila.moveToFirst())

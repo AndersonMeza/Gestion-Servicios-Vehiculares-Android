@@ -58,7 +58,6 @@ public class VentanaIngresoDatosEncargadoGUI extends AppCompatActivity {
                 if(!existeEncargado &&  !usuario.isEmpty() && usuario.indexOf(' ')<0)
                 {
                     ingresoNombre.setEnabled(true);
-                    ingresoApellido.setEnabled(true);
                 }
                 else
                 {
@@ -86,13 +85,15 @@ public class VentanaIngresoDatosEncargadoGUI extends AppCompatActivity {
             @Override
             public void afterTextChanged(Editable s) {
 
-                String nombre=ingresoNombre.getText().toString();
+                String nombre = ingresoNombre.getText().toString();
                 encargadoDP.setNombre(nombre);
 
-                if(ingresoNombre.getText().toString().isEmpty() || ingresoApellido.getText().toString().isEmpty())
+                if (ingresoNombre.getText().toString().isEmpty() ){
                     botonIngresar.setEnabled(false);
-                else
-                    botonIngresar.setEnabled(true);
+                    ingresoApellido.setEnabled(false);
+                }
+                    else
+                    ingresoApellido.setEnabled(true);
             }
         });
 
@@ -112,7 +113,7 @@ public class VentanaIngresoDatosEncargadoGUI extends AppCompatActivity {
                 String apellido=ingresoApellido.getText().toString();
                 encargadoDP.setApellido(apellido);
 
-                if(ingresoNombre.getText().toString().isEmpty() || ingresoApellido.getText().toString().isEmpty())
+                if(ingresoApellido.getText().toString().isEmpty())
                     botonIngresar.setEnabled(false);
                 else
                     botonIngresar.setEnabled(true);
@@ -131,6 +132,9 @@ public class VentanaIngresoDatosEncargadoGUI extends AppCompatActivity {
         ingresoNombre.setText("Nombre");
         ingresoUsuario.setText("Usuario");
         ingresoApellido.setText("Apellido");
+        ingresoNombre.setEnabled(false);
+        ingresoApellido.setEnabled(false);
+        botonIngresar.setEnabled(false);
 
     }
 
