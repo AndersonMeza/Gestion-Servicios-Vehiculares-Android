@@ -1,7 +1,9 @@
 package com.example.hito1;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
@@ -138,13 +140,36 @@ public class VentanaModificarEncargadoGUI extends AppCompatActivity {
     public void Modificar(View view)
     {
         encargadoDM.Modificar(encargadoDP,VentanaModificarEncargadoGUI.this);
+        onBackPressed();
+        onBackPressed();
     }
 
     public void Eliminar(View view)
     {
-        encargadoDM.Eliminar(encargadoDP,VentanaModificarEncargadoGUI.this);
-        Intent intent = new Intent(VentanaModificarEncargadoGUI.this,VentanaIngresoGUI.class);
-        startActivity(intent);
+        final CharSequence[] preguntas = {"si","no"};
+        final AlertDialog.Builder preguntaEliminar = new AlertDialog.Builder(VentanaModificarEncargadoGUI.this);
+        preguntaEliminar.setTitle("¿En verdad quiere eliminar?");
+        preguntaEliminar.setItems(preguntas, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                if(preguntas[which].equals("si"))
+                {
+                    encargadoDM.Eliminar(encargadoDP,VentanaModificarEncargadoGUI.this);
+                    Intent intent = new Intent(VentanaModificarEncargadoGUI.this,VentanaIngresoGUI.class);
+                    startActivity(intent);
+                    onBackPressed();
+                    onBackPressed();
+                }
+                else
+                {
+
+                }
+            }
+        });
+        preguntaEliminar.show();
+
+
+
     }
 }
 

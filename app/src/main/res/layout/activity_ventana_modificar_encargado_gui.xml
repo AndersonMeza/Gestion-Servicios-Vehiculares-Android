@@ -20,14 +20,14 @@
         app:layout_constraintHorizontal_bias="0.222"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textNombre2"
-        app:layout_constraintVertical_bias="0.59"
+        app:layout_constraintVertical_bias="0.666"
         tools:text="@string/textApellido" />
 
     <EditText
         android:id="@+id/textNombre2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="64dp"
+        android:layout_marginTop="76dp"
         android:ems="10"
         android:enabled="true"
         android:inputType="textPersonName"
@@ -52,7 +52,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.14"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textApellido2"
         app:layout_constraintVertical_bias="0.843" />
 
     <EditText
@@ -83,5 +83,5 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/botonIngresarEncargado2"
-        app:layout_constraintVertical_bias="0.073" />
+        app:layout_constraintVertical_bias="0.274" />
 </androidx.constraintlayout.widget.ConstraintLayout>
