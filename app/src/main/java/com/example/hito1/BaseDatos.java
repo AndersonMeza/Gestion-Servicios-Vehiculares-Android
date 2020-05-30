@@ -13,6 +13,7 @@ public class BaseDatos extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL("create table encargados( codigo int primary key, nombre char(15), apellido char(15), usuario char(15))");
+        db.execSQL("create table vehiculos( codigo int primary key, placa char(15), marca char(15), color char(15), tipo char(15), kilometraje int,codigoEncargado int)");
 
     }
 

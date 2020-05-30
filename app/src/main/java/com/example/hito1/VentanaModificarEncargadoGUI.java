@@ -140,8 +140,10 @@ public class VentanaModificarEncargadoGUI extends AppCompatActivity {
     public void Modificar(View view)
     {
         encargadoDM.Modificar(encargadoDP,VentanaModificarEncargadoGUI.this);
-        onBackPressed();
-        onBackPressed();
+        String usuarioEncargado = encargadoDP.usuario;
+        Intent intent = new Intent(VentanaModificarEncargadoGUI.this,VentanaDeVehiculosGUI.class);
+        intent.putExtra("usuarioEncargado",usuarioEncargado);
+        startActivity(intent);
     }
 
     public void Eliminar(View view)

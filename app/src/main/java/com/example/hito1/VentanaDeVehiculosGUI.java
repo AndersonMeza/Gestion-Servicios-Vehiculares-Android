@@ -6,6 +6,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -15,7 +19,14 @@ public class VentanaDeVehiculosGUI extends AppCompatActivity {
 
     public EncargadoDP encargadoDP=new EncargadoDP();
     public EncargadoDM encargadoDM = new EncargadoDM();
-    TextView textoBienvenida;
+    private TextView textoBienvenida;
+
+    //hito 2
+    public VehiculoDP vehiculoDP=new VehiculoDP();
+    public VehiculoDM vehiculoDM=new VehiculoDM();
+    private ListView lista;
+    //
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +43,10 @@ public class VentanaDeVehiculosGUI extends AppCompatActivity {
 
         textoBienvenida = (TextView) findViewById(R.id.textoBienvenida);
         textoBienvenida.setText("Bienvenido "+encargadoDatos.get(2));
+
+        //hito 2
+        cargarVehiculos();
+        //
     }
 
     public boolean onCreateOptionsMenu(Menu menu){
@@ -51,6 +66,37 @@ public class VentanaDeVehiculosGUI extends AppCompatActivity {
         }
         return true;
     }
+
+
+    public void cargarVehiculos()
+    {
+        final List<String> vehiculos=vehiculoDM.Consultar(0,"",this, encargadoDP.codigo);
+        lista = (ListView) findViewById(R.id.ListaVehiculos);
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,R.layout.lista_de_vehiculos,vehiculos);
+        lista.setAdapter(adapter);
+
+        lista.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                String placaVehiculo = vehiculos.get(position);
+                Intent intent = new Intent(VentanaDeVehiculosGUI.this,VentanaDeVehiculoGUI.class);
+                intent.putExtra("placaVehiculo",placaVehiculo);
+                startActivity(intent);
+            }
+        });
+    }
+
+    public void AbrirVentanaCreacionVehiculos(View view)
+    {
+        Intent intent = new Intent(VentanaDeVehiculosGUI.this,VentanaCreacionVehiculosGUI.class);
+        startActivity(intent);
+        //cargarVehiculos();
+    }
+
+
+
 
 
 }

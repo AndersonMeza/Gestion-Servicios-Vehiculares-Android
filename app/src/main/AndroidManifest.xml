@@ -12,6 +12,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".VentanaModificarVehiculosGUI"></activity>
+        <activity android:name=".VentanaCreacionVehiculosGUI" />
+        <activity android:name=".VentanaDeVehiculoGUI" />
+        <activity android:name=".VentanaModificacionServiciosGUI" />
+        <activity android:name=".VentanaDeCreacionServiciosGUI" />
         <activity android:name=".VentanaModificarEncargadoGUI" />
         <activity android:name=".VentanaDeVehiculosGUI" />
         <activity android:name=".VentanaIngresoDatosEncargadoGUI" />

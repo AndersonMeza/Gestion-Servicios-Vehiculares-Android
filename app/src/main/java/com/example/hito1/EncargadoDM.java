@@ -87,7 +87,7 @@ public class EncargadoDM
                 while(fila.moveToNext());
 
                 for (int i=0;i<4;i++)
-                    usuarios.add(unitario[0]);
+                    usuarios.add(unitario[i]);
             }
         }
         else if(usuario=="")
@@ -119,7 +119,7 @@ public class EncargadoDM
         return usuarios;
     }
 
-    public boolean VerificarUsuario(String usuario, Activity clase)
+    public boolean VerificarUsuario(String usuario,  Activity clase)
     {
         boolean existe = false;
         List<String> consulta =Consultar(0,"",clase);
