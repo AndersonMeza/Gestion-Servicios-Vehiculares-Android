@@ -83,6 +83,7 @@ public class VentanaDeVehiculosGUI extends AppCompatActivity {
                 String placaVehiculo = vehiculos.get(position);
                 Intent intent = new Intent(VentanaDeVehiculosGUI.this,VentanaDeVehiculoGUI.class);
                 intent.putExtra("placaVehiculo",placaVehiculo);
+                intent.putExtra("codigoEncargado",encargadoDP.codigo);
                 startActivity(intent);
             }
         });
@@ -91,8 +92,10 @@ public class VentanaDeVehiculosGUI extends AppCompatActivity {
     public void AbrirVentanaCreacionVehiculos(View view)
     {
         Intent intent = new Intent(VentanaDeVehiculosGUI.this,VentanaCreacionVehiculosGUI.class);
+        intent.putExtra("codigoEncargado",encargadoDP.codigo);
         startActivity(intent);
-        //cargarVehiculos();
+
+        cargarVehiculos();
     }
 
 

@@ -30,6 +30,7 @@ public class VentanaModificarEncargadoGUI extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ventana_modificar_encargado_gui);
+
         String usuario=getIntent().getStringExtra("usuarioEncargado");
         List<String> encargadoDatos = encargadoDM.Consultar(0,usuario,VentanaModificarEncargadoGUI.this);
         encargadoDP.setCodigo(Integer.parseInt(encargadoDatos.get(0)));
@@ -169,9 +170,6 @@ public class VentanaModificarEncargadoGUI extends AppCompatActivity {
             }
         });
         preguntaEliminar.show();
-
-
-
     }
 }
 

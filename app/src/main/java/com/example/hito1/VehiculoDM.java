@@ -17,7 +17,7 @@ public class VehiculoDM {
 
     }
 
-    public void Crear(EncargadoDP encargadoExistente,VehiculoDP nuevoVehiculo, Activity clase)
+    public void Crear(VehiculoDP nuevoVehiculo, Activity clase)
     {
         BaseDatos crear = new BaseDatos(clase,"vehiculos",null,1);
         SQLiteDatabase baseDatos= crear.getWritableDatabase();
@@ -28,7 +28,7 @@ public class VehiculoDM {
         String color=nuevoVehiculo.color;
         String tipo=nuevoVehiculo.tipo;
         int kilometraje=nuevoVehiculo.kilometraje;
-        int codigoEncargado=encargadoExistente.codigo;
+        int codigoEncargado=nuevoVehiculo.codigoEncargado;
 
         ContentValues registro= new ContentValues();
         registro.put("codigo", codigo);
@@ -132,10 +132,10 @@ public class VehiculoDM {
         return placas;
     }
 
-    public boolean VerificarPlaca(String placa, EncargadoDP encargado, Activity clase)
+    public boolean VerificarPlaca(String placa, int codigoEncargado, Activity clase)
     {
         boolean existe = false;
-        List<String> consulta =Consultar(0,"",clase,encargado.codigo);
+        List<String> consulta =Consultar(0,"",clase,codigoEncargado);
 
         if(consulta.indexOf(placa)>=0)
             existe=true;

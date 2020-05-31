@@ -22,12 +22,12 @@ public class VehiculoDP {
         this.placa = placa;
     }
 
-    public void setNombre(String marca)
+    public void setMarca(String marca)
     {
         this.marca = marca;
     }
 
-    public void setApellido(String color)
+    public void setColor(String color)
     {
         this.color = color;
     }
@@ -49,11 +49,11 @@ public class VehiculoDP {
         this.codigo=codigo;
     }
 
-    public boolean verificarPlaca( Activity clase, EncargadoDP encargadoDP)
+    public boolean verificarPlaca( Activity clase, int codigoEncargado)
     {
         boolean existe = false;
         VehiculoDM nuevo = new VehiculoDM();
-        existe=nuevo.VerificarPlaca(this.placa,encargadoDP,clase);
+        existe=nuevo.VerificarPlaca(this.placa,codigoEncargado,clase);
         return  existe;
     }
 }

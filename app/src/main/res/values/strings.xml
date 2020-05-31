@@ -8,7 +8,17 @@
     <string name="seleccioneEncargado">Seleccione su Usuario</string>
     <string name="textoBienvenida">Bienvenido</string>
     <string name="itemEditarEncargado">Modificar Encargado</string>
+    <string name="itemEditarVehiculo">Modificar Vehiculo</string>
     <string name="title_activity_ventana_de_vehiculos_gu">VentanaDeVehiculosGU</string>
     <string name="boton_modificar_encargado">Modificar</string>
+    <string name="boton_modificar_vehiculo">Modificar</string>
+    <string name="texto_Placa">Placa</string>
+    <string name="texto_Tipo">Tipo Vehiculo</string>
+    <string name="texto_Color">Color</string>
+    <string name="texto_Marca">Marca</string>
+    <string name="texto_Kilometraje">Kilometraje</string>
+    <string name="boton_ingresar_vehiculo">Crear Nuevo</string>
     <string name="boton_eliminar_encargado">Eliminar Encargado</string>
+    <string name="boton_eliminar_vehiculo">Eliminar Vehiculo</string>
+
 </resources>
