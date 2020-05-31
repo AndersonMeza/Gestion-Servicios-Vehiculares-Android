@@ -9,9 +9,13 @@
     <string name="textoBienvenida">Bienvenido</string>
     <string name="itemEditarEncargado">Modificar Encargado</string>
     <string name="itemEditarVehiculo">Modificar Vehiculo</string>
+    <string name="itemEditarServicio">Modificar Servicio</string>
     <string name="title_activity_ventana_de_vehiculos_gu">VentanaDeVehiculosGU</string>
     <string name="boton_modificar_encargado">Modificar</string>
     <string name="boton_modificar_vehiculo">Modificar</string>
+    <string name="bont_crear_servicio">Crear Nuevo</string>
+    <string name="texto_Kilometraje_cad_Cam">Km cada cambio</string>
+    <string name="texto_Kilometraje_ult_Cam">Km último cambio</string>
     <string name="texto_Placa">Placa</string>
     <string name="texto_Tipo">Tipo Vehiculo</string>
     <string name="texto_Color">Color</string>

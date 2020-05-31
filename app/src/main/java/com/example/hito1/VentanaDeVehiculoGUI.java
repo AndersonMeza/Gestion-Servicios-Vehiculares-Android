@@ -21,7 +21,7 @@ public class VentanaDeVehiculoGUI extends AppCompatActivity {
     private TextView textoPlaca;
 
     public  ServicioDP servicioDP=new ServicioDP();
-    public ServcioDM servcioDM=new ServcioDM();
+    public ServicioDM servcioDM=new ServicioDM();
     private ListView lista;
 
     @Override
@@ -44,8 +44,29 @@ public class VentanaDeVehiculoGUI extends AppCompatActivity {
         textoPlaca = (TextView) findViewById(R.id.textoPlaca);
         textoPlaca.setText("Placa: "+vehiculoDatos.get(1));
 
-        //hito 2
-        //cargarVehiculos();
+
+        cargarServicios();
+    }
+
+    public void cargarServicios()
+    {
+        final List<String> servicios=servcioDM.Consultar(0,"",this, vehiculoDP.codigo);
+        lista = (ListView) findViewById(R.id.ListaServicios);
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,R.layout.lista_de_servicios,servicios);
+        lista.setAdapter(adapter);
+
+        lista.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                String nombreServicio = servicios.get(position);
+                Intent intent = new Intent(VentanaDeVehiculoGUI.this,VentanaDeVehiculoGUI.class);
+                intent.putExtra("nombreServicio",nombreServicio);
+                intent.putExtra("codigoVehiculo",vehiculoDP.codigo);
+                startActivity(intent);
+            }
+        });
     }
 
     public boolean onCreateOptionsMenu(Menu menu){
@@ -64,7 +85,23 @@ public class VentanaDeVehiculoGUI extends AppCompatActivity {
             intent.putExtra("codigoEncargado",vehiculoDP.codigoEncargado);
             startActivity(intent);
         }
+        else if (id==R.id.itemModificarServicio)
+        {
+            Intent intent = new Intent(VentanaDeVehiculoGUI.this,VentanaModificacionServiciosGUI.class);
+            intent.putExtra("placaVehiculo",vehiculoDP.placa);
+            intent.putExtra("codigoEncargado",vehiculoDP.codigoEncargado);
+            startActivity(intent);
+        }
         return true;
     }
 
+
+    public void AbrirVentanaCreacionServicios(View view)
+    {
+        Intent intent = new Intent(VentanaDeVehiculoGUI.this,VentanaDeCreacionServiciosGUI.class);
+        intent.putExtra("codigoVehiculo",vehiculoDP.codigo);
+        startActivity(intent);
+
+        cargarServicios();
+    }
 }

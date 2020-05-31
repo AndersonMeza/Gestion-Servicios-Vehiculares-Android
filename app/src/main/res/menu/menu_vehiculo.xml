@@ -5,4 +5,7 @@
     <item
         android:id="@+id/itemModificarVehiculo"
         android:title="@string/itemEditarVehiculo" />
+    <item
+        android:id="@+id/itemModificarServicio"
+        android:title="@string/itemEditarServicio" />
 </menu>

@@ -114,7 +114,8 @@ public class VehiculoDM {
         }
         else
         {
-            Cursor fila = baseDatos.rawQuery("select * from vehiculos where placa= '"+placa+"' and codigoEncargado="+codigoEncargado,null);
+            Cursor fila = baseDatos.rawQuery("select * from vehicu" +
+                    "los where placa= '"+placa+"' and codigoEncargado="+codigoEncargado,null);
 
 
             if(fila.moveToFirst())
