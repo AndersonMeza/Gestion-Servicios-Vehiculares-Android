@@ -29,6 +29,7 @@
         android:layout_marginLeft="52dp"
         android:layout_marginBottom="88dp"
         android:ems="10"
+        android:enabled="false"
         android:inputType="number"
         app:layout_constraintBottom_toTopOf="@+id/textoKilometrajeUltimoCambio"
         app:layout_constraintStart_toStartOf="parent" />
@@ -41,6 +42,7 @@
         android:layout_marginLeft="52dp"
         android:layout_marginBottom="324dp"
         android:ems="10"
+        android:enabled="false"
         android:inputType="number"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -52,6 +54,7 @@
         android:layout_marginStart="48dp"
         android:layout_marginLeft="48dp"
         android:layout_marginBottom="192dp"
+        android:enabled="false"
         android:onClick="RegistrarS"
         android:text="@string/bont_crear_servicio"
         app:layout_constraintBottom_toBottomOf="parent"

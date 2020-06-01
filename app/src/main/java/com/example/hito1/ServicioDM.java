@@ -105,7 +105,7 @@ public class ServicioDM {
         }
         else
         {
-            Cursor fila = baseDatos.rawQuery("select * from servicio where nombre= '"+nombre+"' and codigoVehiculo="+codigoVehiculo,null);
+            Cursor fila = baseDatos.rawQuery("select * from servicios where nombre= '"+nombre+"' and codigoVehiculo="+codigoVehiculo,null);
 
 
             if(fila.moveToFirst())

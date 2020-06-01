@@ -24,5 +24,9 @@
     <string name="boton_ingresar_vehiculo">Crear Nuevo</string>
     <string name="boton_eliminar_encargado">Eliminar Encargado</string>
     <string name="boton_eliminar_vehiculo">Eliminar Vehiculo</string>
+    <string name="boton_eliminar_Servicio">Eliminar Servicio</string>
+    <string name="boton_modificar_Servicio">Modificar</string>
+    <string name="texto_Seleccione_Servicio">Seleccione Un Servicio</string>
+
 
 </resources>
