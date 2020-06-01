@@ -209,7 +209,7 @@ public class VentanaModificarVehiculosGUI extends AppCompatActivity {
                 }
                 else
                 {
-                    ingresoTipo.setEnabled(true);
+                    botonModificar.setEnabled(true);
                     int kilometraje=Integer.parseInt(ingresoKilometraje.getText().toString());
                     vehiculoDP.setKilometraje(kilometraje);
                 }
