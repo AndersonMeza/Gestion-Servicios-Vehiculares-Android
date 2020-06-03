@@ -60,10 +60,14 @@ public class VentanaDeVehiculoGUI extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
+                final List<String> servicios2=servcioDM.Consultar(0,servicios.get(position),VentanaDeVehiculoGUI.this, vehiculoDP.codigo);
                 String nombreServicio = servicios.get(position);
-                Intent intent = new Intent(VentanaDeVehiculoGUI.this,VentanaDeVehiculoGUI.class);
+
+                Intent intent = new Intent(VentanaDeVehiculoGUI.this,VentanaDeRegistro.class);
                 intent.putExtra("nombreServicio",nombreServicio);
+                intent.putExtra("codigoEncargado",vehiculoDP.codigoEncargado);
                 intent.putExtra("codigoVehiculo",vehiculoDP.codigo);
+                intent.putExtra("codigoServicio",Integer.parseInt(servicios2.get(1)));
                 startActivity(intent);
             }
         });
