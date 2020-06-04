@@ -75,9 +75,9 @@ public class VentanaDeRegistroGUI extends AppCompatActivity {
                     Date fecha = formato.parse(ingreso_fecha);
                     relacionencvehserDP.setFecha(fecha);
                     botonIngresar.setEnabled(true);
+                    Toast.makeText(getBaseContext(),"Fecha valida",Toast.LENGTH_SHORT).show();
 
                 } catch (ParseException e) {
-                    Toast.makeText(getBaseContext(),"Fecha no valida",Toast.LENGTH_SHORT).show();
                     botonIngresar.setEnabled(false);
                 }
 

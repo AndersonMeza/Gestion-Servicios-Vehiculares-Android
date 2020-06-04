@@ -56,13 +56,18 @@ public class RelacionencvehserDM {
 
     public void Modificar( RelacionencvehserDP modificarRegistro, Activity clase)
     {
+
+        Calendar cal = Calendar.getInstance(TimeZone.getTimeZone("Europe/Paris"));
+        cal.setTime(modificarRegistro.fecha);
+        int año =modificarRegistro.fecha.getYear()+1900;
+        int mes=modificarRegistro.fecha.getMonth()+1;
+        int dia=cal.get(Calendar.DAY_OF_MONTH);
+
         BaseDatos modificar = new BaseDatos(clase,"registros",null,1);
         SQLiteDatabase baseDatos= modificar.getWritableDatabase();
 
         int codigo=modificarRegistro.getCodigo();
-        Date fecha=modificarRegistro.fecha;
-
-        baseDatos.execSQL("Update registros set fecha='"+fecha.toString()+"' where codigo="+codigo);
+        baseDatos.execSQL("Update registros set fecha='"+año+"-"+mes+"-"+dia+"' where codigo="+codigo);
         Toast.makeText(clase,"Se ha modificado correctamente",Toast.LENGTH_SHORT).show();
     }
 

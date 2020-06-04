@@ -31,6 +31,7 @@
     <string name="texto_Fecha">Fecha en que se realiza (año-mes-día)</string>
     <string name="boton_nuevo_Registro">Ingresar</string>
     <string name="item_menu_registros">Registros</string>
+    <string name="boton_modificar_registros">Modificar</string>
 
 
 </resources>

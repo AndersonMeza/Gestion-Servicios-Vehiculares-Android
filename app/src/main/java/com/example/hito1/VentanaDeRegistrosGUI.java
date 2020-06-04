@@ -83,7 +83,16 @@ public class VentanaDeRegistrosGUI extends AppCompatActivity {
                             }
 
                             } else if (preguntas[which].equals(("Modificar"))) {
-
+                                int posicionEspacio = listaRegistros.get(position).indexOf(" ");
+                                final List<String> registros2 = relacionencvehserDM.Consultar(listaRegistros.get(position).substring(posicionEspacio+1), VentanaDeRegistrosGUI.this, codigoVehiculo, listaRegistros.get(position).substring(0, posicionEspacio));
+                                Intent intent = new Intent(VentanaDeRegistrosGUI.this, VentanaModificacionRegistroGUI.class);
+                                intent.putExtra("codigo", Integer.parseInt(registros2.get(0)));
+                                intent.putExtra("fecha", registros2.get(1));
+                                intent.putExtra("nombreServicio", registros2.get(2));
+                                intent.putExtra("codigoEncargado", Integer.parseInt(registros2.get(3)));
+                                intent.putExtra("codigoVehiculo", Integer.parseInt((registros2.get(4))));
+                                intent.putExtra("codigoServicio", Integer.parseInt(registros2.get(5)));
+                                startActivity(intent);
                             }
                         }
                     });
