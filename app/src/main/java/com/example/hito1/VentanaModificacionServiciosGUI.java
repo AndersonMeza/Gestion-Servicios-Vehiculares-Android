@@ -69,6 +69,12 @@ public class VentanaModificacionServiciosGUI extends AppCompatActivity {
         comboboxEncargados = (Spinner) findViewById(R.id.comboboxServicios);
         servicios=servicioDM.Consultar(0,"",this, vehiculoDP.codigo);
 
+        for(int i=0;i<servicios.size();i++)
+        {
+            int pos=servicios.get(i).indexOf(" ");
+            servicios.set(i,servicios.get(i).substring(pos+1));
+        }
+
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, servicios);
         comboboxEncargados.setAdapter(adapter);
 

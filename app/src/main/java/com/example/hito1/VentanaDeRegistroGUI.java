@@ -15,9 +15,13 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 public class VentanaDeRegistroGUI extends AppCompatActivity {
 
+    VehiculoDM vehiculoDM =new VehiculoDM();
+    ServicioDP servicioDP = new ServicioDP();
+    ServicioDM servicioDM=new ServicioDM();
     RelacionencvehserDP relacionencvehserDP=new RelacionencvehserDP();
     RelacionencvehserDM relacionencvehserDM=new RelacionencvehserDM();
     TextView ingresoNombreServicio;
@@ -93,6 +97,14 @@ public class VentanaDeRegistroGUI extends AppCompatActivity {
 
     public void Registrar(View view)
     {
+        List<String> datosS= servicioDM.Consultar(codigoServicio,"",VentanaDeRegistroGUI.this,codigoVehiculo);
+        servicioDP.setCodigo(codigoServicio);
+        servicioDP.nombre=datosS.get(1);
+        servicioDP.setKmCadaCambio(Integer.parseInt(datosS.get(2)));
+        List<String> datosV =vehiculoDM.Consultar(codigoVehiculo,"",VentanaDeRegistroGUI.this,codigoEncargado);
+        servicioDP.setKmUltimoCambio(Integer.parseInt(datosV.get(5)));
+        servicioDM.Modificar(servicioDP,VentanaDeRegistroGUI.this);
+
         int nuevoCodigo=relacionencvehserDM.getCodigo(this);
         relacionencvehserDP.setCodigo(nuevoCodigo);
         relacionencvehserDM.Crear(relacionencvehserDP,this);

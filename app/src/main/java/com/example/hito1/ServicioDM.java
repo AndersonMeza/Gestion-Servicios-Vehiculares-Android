@@ -94,11 +94,11 @@ public class ServicioDM {
         else if(nombre=="")
         {
 
-            Cursor fila = baseDatos.rawQuery("select * from servicios where codigoVehiculo="+codigoVehiculo,null);
+            Cursor fila = baseDatos.rawQuery("select kmCadaCambio+kmUltimoCambio as km,nombre from servicios where codigoVehiculo="+codigoVehiculo+" order by km asc",null);
             if(fila.moveToFirst())
             {
                 do{
-                    placas.add(fila.getString(1));
+                    placas.add(fila.getString(0)+"km "+fila.getString(1));
                 }
                 while(fila.moveToNext());
             }

@@ -24,6 +24,7 @@ public class VentanaDeVehiculoGUI extends AppCompatActivity {
     public  ServicioDP servicioDP=new ServicioDP();
     public ServicioDM servcioDM=new ServicioDM();
     private ListView lista;
+    int posEspacio=0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,7 +44,7 @@ public class VentanaDeVehiculoGUI extends AppCompatActivity {
         vehiculoDP.codigoEncargado=Integer.parseInt(vehiculoDatos.get(6));
 
         textoPlaca = (TextView) findViewById(R.id.textoPlaca);
-        textoPlaca.setText("Placa: "+vehiculoDatos.get(1));
+        textoPlaca.setText("Placa: "+vehiculoDatos.get(1)+ " Km:"+vehiculoDatos.get(5));
 
 
         cargarServicios();
@@ -61,7 +62,8 @@ public class VentanaDeVehiculoGUI extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                String nombre=servicios.get(position);
+                posEspacio=servicios.get(position).indexOf(" ");
+                String nombre=servicios.get(position).substring(posEspacio+1);
                 List<String> serviciosDatos = servcioDM.Consultar(0,nombre,VentanaDeVehiculoGUI.this,vehiculoDP.codigo);
                 Intent intent = new Intent(VentanaDeVehiculoGUI.this, VentanaDeRegistroGUI.class);
                 intent.putExtra("nombreServicio",nombre);
