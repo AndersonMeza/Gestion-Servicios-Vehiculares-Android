@@ -11,6 +11,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.List;
 
@@ -60,14 +61,13 @@ public class VentanaDeVehiculoGUI extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                final List<String> servicios2=servcioDM.Consultar(0,servicios.get(position),VentanaDeVehiculoGUI.this, vehiculoDP.codigo);
-                String nombreServicio = servicios.get(position);
-
-                Intent intent = new Intent(VentanaDeVehiculoGUI.this,VentanaDeRegistro.class);
-                intent.putExtra("nombreServicio",nombreServicio);
+                String nombre=servicios.get(position);
+                List<String> serviciosDatos = servcioDM.Consultar(0,nombre,VentanaDeVehiculoGUI.this,vehiculoDP.codigo);
+                Intent intent = new Intent(VentanaDeVehiculoGUI.this, VentanaDeRegistroGUI.class);
+                intent.putExtra("nombreServicio",nombre);
                 intent.putExtra("codigoEncargado",vehiculoDP.codigoEncargado);
                 intent.putExtra("codigoVehiculo",vehiculoDP.codigo);
-                intent.putExtra("codigoServicio",Integer.parseInt(servicios2.get(1)));
+                intent.putExtra("codigoServicio",Integer.parseInt(serviciosDatos.get(0)));
                 startActivity(intent);
             }
         });
@@ -94,6 +94,13 @@ public class VentanaDeVehiculoGUI extends AppCompatActivity {
             Intent intent = new Intent(VentanaDeVehiculoGUI.this,VentanaModificacionServiciosGUI.class);
             intent.putExtra("placaVehiculo",vehiculoDP.placa);
             intent.putExtra("codigoEncargado",vehiculoDP.codigoEncargado);
+            startActivity(intent);
+        }
+        else if (id==R.id.itemRegistros)
+        {
+            Intent intent = new Intent(VentanaDeVehiculoGUI.this, VentanaDeRegistrosGUI.class);
+            intent.putExtra("codigoEncargado",vehiculoDP.codigoEncargado);
+            intent.putExtra("codigoVehiculo",vehiculoDP.codigo);
             startActivity(intent);
         }
         return true;

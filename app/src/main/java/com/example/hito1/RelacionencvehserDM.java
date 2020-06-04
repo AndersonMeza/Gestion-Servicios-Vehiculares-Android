@@ -7,8 +7,10 @@ import android.database.sqlite.SQLiteDatabase;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.util.TimeZone;
 
 public class RelacionencvehserDM {
 
@@ -30,9 +32,16 @@ public class RelacionencvehserDM {
         int codigoVehiculo=nuevoRegistro.codigoVehiculo;
         int codigoServicio=nuevoRegistro.codigoServicio;
 
+
+        Calendar cal = Calendar.getInstance(TimeZone.getTimeZone("Europe/Paris"));
+        cal.setTime(fecha);
+        int año =fecha.getYear()+1900;
+        int mes=fecha.getMonth()+1;
+        int dia=cal.get(Calendar.DAY_OF_MONTH);
+
         ContentValues registro= new ContentValues();
         registro.put("codigo", codigo);
-        registro.put("fecha", fecha.toString());
+        registro.put("fecha", año+"-"+mes+"-"+dia);
         registro.put("nombreServicio",nombreServicio);
         registro.put("codigoEncargado",codigoEncargado);
         registro.put("codigoVehiculo",codigoVehiculo);
@@ -67,7 +76,7 @@ public class RelacionencvehserDM {
         Toast.makeText(clase,"Se ha eliminado correctamente",Toast.LENGTH_SHORT).show();
     }
 
-    public List<String> Consultar( String nombreServicio, Activity clase, int codigoServicio, Date fecha)
+    public List<String> Consultar( String nombreServicio, Activity clase, int codigoVehiculo, String fecha)
     {
         BaseDatos consultar = new BaseDatos(clase,"registros",null,1);
         SQLiteDatabase baseDatos= consultar.getReadableDatabase();
@@ -76,18 +85,18 @@ public class RelacionencvehserDM {
         if(nombreServicio=="")
         {
 
-            Cursor fila = baseDatos.rawQuery("select * from registros where codigoServicio="+codigoServicio+"and fecha='"+fecha.toString()+"' order by fecha desc",null);
+            Cursor fila = baseDatos.rawQuery("select * from registros where codigoVehiculo="+codigoVehiculo+" order by fecha desc",null);
             if(fila.moveToFirst())
             {
                 do{
-                    placas.add(fila.getString(1) + fila.getString(2));
+                    placas.add(fila.getString(1) + " "+ fila.getString(2));
                 }
                 while(fila.moveToNext());
             }
         }
         else
         {
-            Cursor fila = baseDatos.rawQuery("select * from registros where nombreServicio= '"+nombreServicio+"' and fecha='"+fecha.toString()+"' and codigoServicio="+codigoServicio,null);
+            Cursor fila = baseDatos.rawQuery("select * from registros where fecha='"+fecha+"' and nombreServicio='"+nombreServicio+"' and codigoVehiculo="+codigoVehiculo,null);
 
 
             if(fila.moveToFirst())

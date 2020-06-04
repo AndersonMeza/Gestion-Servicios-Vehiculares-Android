@@ -8,4 +8,7 @@
     <item
         android:id="@+id/itemModificarServicio"
         android:title="@string/itemEditarServicio" />
+    <item
+        android:id="@+id/itemRegistros"
+        android:title="@string/item_menu_registros" />
 </menu>

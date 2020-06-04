@@ -28,8 +28,9 @@
     <string name="boton_modificar_Servicio">Modificar</string>
     <string name="texto_Seleccione_Servicio">Seleccione Un Servicio</string>
     <string name="texto_Nombre_Servicio_R">Servicio</string>
-    <string name="texto_Fecha">Fecha en que se realiza</string>
+    <string name="texto_Fecha">Fecha en que se realiza (año-mes-día)</string>
     <string name="boton_nuevo_Registro">Ingresar</string>
+    <string name="item_menu_registros">Registros</string>
 
 
 </resources>

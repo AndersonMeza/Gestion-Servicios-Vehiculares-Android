@@ -16,7 +16,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class VentanaDeRegistro extends AppCompatActivity {
+public class VentanaDeRegistroGUI extends AppCompatActivity {
 
     RelacionencvehserDP relacionencvehserDP=new RelacionencvehserDP();
     RelacionencvehserDM relacionencvehserDM=new RelacionencvehserDM();
@@ -37,14 +37,22 @@ public class VentanaDeRegistro extends AppCompatActivity {
         codigoEncargado=getIntent().getIntExtra("codigoEncargado",0);
         codigoVehiculo=getIntent().getIntExtra("codigoVehiculo",0);
         codigoServicio=getIntent().getIntExtra("codigoServicio",0);
-        relacionencvehserDP.setNombreServicio(nombreServicio);
-        relacionencvehserDP.setCodigoEncargado(codigoEncargado);
-        relacionencvehserDP.setCodigoVehiculo(codigoVehiculo);
-        relacionencvehserDP.setCodigoServicio(codigoServicio);
-        ingresoNombreServicio =(TextView) findViewById(R.id.textoNombreServicioR);
-        ingresoFecha =(TextView) findViewById(R.id.textoFecha);
-        botonIngresar =(Button) findViewById(R.id.botonCrearNuevoRegistro);
-        cargarServicio();
+        try
+        {
+            relacionencvehserDP.setNombreServicio(nombreServicio);
+            relacionencvehserDP.setCodigoEncargado(codigoEncargado);
+            relacionencvehserDP.setCodigoVehiculo(codigoVehiculo);
+            relacionencvehserDP.setCodigoServicio(codigoServicio);
+            ingresoNombreServicio =(TextView) findViewById(R.id.textoNombreServicioR);
+            ingresoFecha =(TextView) findViewById(R.id.textoFecha);
+            botonIngresar =(Button) findViewById(R.id.botonCrearNuevoRegistro);
+            cargarServicio();
+        }
+        catch (Exception e)
+        {
+            Toast.makeText(getBaseContext(),"Error",Toast.LENGTH_SHORT);
+        }
+
 
         ingresoFecha.addTextChangedListener(new TextWatcher() {
             @Override
@@ -69,7 +77,8 @@ public class VentanaDeRegistro extends AppCompatActivity {
                     botonIngresar.setEnabled(true);
 
                 } catch (ParseException e) {
-                    e.printStackTrace();
+                    Toast.makeText(getBaseContext(),"Fecha no valida",Toast.LENGTH_SHORT).show();
+                    botonIngresar.setEnabled(false);
                 }
 
             }
@@ -81,12 +90,12 @@ public class VentanaDeRegistro extends AppCompatActivity {
     {
         ingresoNombreServicio.setText(nombreServicio);
     }
+
     public void Registrar(View view)
     {
         int nuevoCodigo=relacionencvehserDM.getCodigo(this);
         relacionencvehserDP.setCodigo(nuevoCodigo);
         relacionencvehserDM.Crear(relacionencvehserDP,this);
-        ingresoFecha.setText("");
     }
 
 
